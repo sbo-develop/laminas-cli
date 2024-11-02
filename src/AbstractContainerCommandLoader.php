@@ -22,7 +22,7 @@ abstract class AbstractContainerCommandLoader implements CommandLoaderInterface
     private $commandMap;
 
     /** @psalm-param array<string, string> $commandMap */
-    final public function __construct(private ContainerInterface $container, array $commandMap)
+    final public function __construct(private readonly ContainerInterface $container, array $commandMap)
     {
         Assert::isMap($commandMap);
         Assert::allString($commandMap);

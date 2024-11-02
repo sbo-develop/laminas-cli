@@ -28,7 +28,7 @@ final class ContainerResolver
      * @psalm-param non-empty-string $projectRoot
      */
     public function __construct(
-        private string $projectRoot
+        private readonly string $projectRoot
     ) {
     }
 
