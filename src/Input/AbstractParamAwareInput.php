@@ -96,7 +96,7 @@ abstract class AbstractParamAwareInput implements ParamAwareInputInterface
         $value = $this->askQuestion($question, $valueIsArray, $inputParam->isRequired());
 
         // Reset the validator if we prepended it earlier.
-        if ($originalValidator) {
+        if ($originalValidator !== null) {
             $question->setValidator($originalValidator);
         }
 
@@ -211,7 +211,7 @@ abstract class AbstractParamAwareInput implements ParamAwareInputInterface
         string $paramName
     ): void {
         // No validator: nothing to do
-        if (! $validator) {
+        if ($validator === null) {
             return;
         }
 

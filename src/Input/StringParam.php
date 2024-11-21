@@ -13,7 +13,7 @@ use function preg_match;
 use function restore_error_handler;
 use function set_error_handler;
 use function sprintf;
-use function strstr;
+use function str_contains;
 
 use const E_WARNING;
 
@@ -70,7 +70,7 @@ final class StringParam extends AbstractInputParam
     {
         // phpcs:ignore WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCaps
         set_error_handler(static function (int $_, string $errstr): bool {
-            if (! strstr($errstr, 'preg_match')) {
+            if (! str_contains($errstr, 'preg_match')) {
                 return false;
             }
 

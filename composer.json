@@ -27,7 +27,7 @@
         }
     },
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
         "composer-runtime-api": "^2.0.0",
         "psr/container": "^1.0 || ^2.0",
         "symfony/console": "^6.0 || ^7.0",
@@ -35,13 +35,13 @@
         "webmozart/assert": "^1.10"
     },
     "require-dev": {
-        "laminas/laminas-coding-standard": "~2.5.0",
-        "laminas/laminas-mvc": "^3.7.0",
-        "laminas/laminas-servicemanager": "^3.22.1",
+        "laminas/laminas-coding-standard": "^3.0.1",
+        "laminas/laminas-mvc": "^3.8.0",
+        "laminas/laminas-servicemanager": "^3.23.0",
         "mikey179/vfsstream": "2.0.x-dev",
-        "phpunit/phpunit": "^10.5.5",
+        "phpunit/phpunit": "^10.5.38",
         "psalm/plugin-phpunit": "^0.19.0",
-        "vimeo/psalm": "^5.18"
+        "vimeo/psalm": "^5.26.1"
     },
     "autoload": {
         "psr-4": {
@@ -68,5 +68,8 @@
         "static-analysis": "psalm --shepherd --stats",
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+    },
+    "conflict": {
+        "amphp/amp":"<2.6.4"
     }
 }

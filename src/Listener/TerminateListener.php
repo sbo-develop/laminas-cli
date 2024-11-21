@@ -12,6 +12,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Event\ConsoleTerminateEvent;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\StreamableInputInterface;
 use Symfony\Component\Console\Question\ChoiceQuestion;
 use Webmozart\Assert\Assert;
 
@@ -117,8 +118,15 @@ final class TerminateListener
 
             $inputMapper = $this->createInputMapper($inputMapperSpec, $nextCommandClass);
 
-            $params   = ['command' => $nextCommandName] + $inputMapper($input);
-            $exitCode = $application->run(new ArrayInput($params), $output);
+            $params              = ['command' => $nextCommandName] + $inputMapper($input);
+            $inputForNextCommand = new ArrayInput($params);
+            if ($input instanceof StreamableInputInterface) {
+                $stream = $input->getStream();
+                if ($stream !== null) {
+                    $inputForNextCommand->setStream($stream);
+                }
+            }
+            $exitCode = $application->run($inputForNextCommand, $output);
             /** @psalm-suppress TypeDoesNotContainType */
             if (! is_int($exitCode)) {
                 $exitCode = 0;

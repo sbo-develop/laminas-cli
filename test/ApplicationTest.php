@@ -24,6 +24,7 @@ use Symfony\Component\Console\Tester\ApplicationTester;
 
 use function array_filter;
 use function current;
+use function is_int;
 
 /** @psalm-suppress PropertyNotSetInConstructor */
 class ApplicationTest extends TestCase
@@ -270,7 +271,9 @@ class ApplicationTest extends TestCase
             ]
         );
 
-        self::assertSame(current(array_filter($exitCodes)) ?: 0, $statusCode);
+        $currentExitCode = current(array_filter($exitCodes));
+
+        self::assertSame(is_int($currentExitCode) ? $currentExitCode : 0, $statusCode);
         $display = $applicationTester->getDisplay();
         foreach ($contains as $str) {
             self::assertStringContainsString($str, $display, 'Output does not contain ' . $str . "\n" . $display);
