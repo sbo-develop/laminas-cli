@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laminas\Cli\Input;
 
 use InvalidArgumentException;
+use Stringable;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
@@ -26,7 +27,7 @@ use function sprintf;
  *
  * @internal
  */
-abstract class AbstractParamAwareInput implements ParamAwareInputInterface
+abstract class AbstractParamAwareInput implements ParamAwareInputInterface, Stringable
 {
     /**
      * @param array<string, InputParamInterface> $params

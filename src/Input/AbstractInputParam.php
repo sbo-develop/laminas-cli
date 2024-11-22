@@ -56,7 +56,7 @@ abstract class AbstractInputParam implements InputParamInterface
         /**
          * Parameter name; must be set by class composing trait!
          */
-        private string $name
+        private readonly string $name
     ) {
     }
 

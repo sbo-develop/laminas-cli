@@ -18,11 +18,10 @@ use Webmozart\Assert\Assert;
 
 use function array_search;
 use function file_get_contents;
+use function get_debug_type;
 use function getcwd;
-use function gettype;
 use function is_array;
 use function is_int;
-use function is_object;
 use function is_string;
 use function json_decode;
 use function preg_match;
@@ -151,7 +150,7 @@ final class TerminateListener
             'Expected array option map or %s class implementation name for %s input mapper; received "%s"',
             InputMapperInterface::class,
             $commandClass,
-            is_object($inputMapperSpec) ? $inputMapperSpec::class : gettype($inputMapperSpec)
+            get_debug_type($inputMapperSpec)
         ));
 
         Assert::classExists(

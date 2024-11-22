@@ -17,7 +17,7 @@ final class ArrayInputMapper implements InputMapperInterface
      * @psalm-param array<string|int, string|array<string, string>> $map
      */
     public function __construct(
-        private array $map
+        private readonly array $map
     ) {
     }
 
