@@ -1,5 +1,5 @@
 {
-    "name": "laminas/laminas-cli",
+    "name": "sbo-develop/laminas-cli",
     "description": "Command-line interface for Laminas projects",
     "license": "BSD-3-Clause",
     "keywords": [
