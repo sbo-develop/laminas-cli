@@ -53,7 +53,9 @@ final class TerminateListener
 
     public function __invoke(ConsoleTerminateEvent $event): void
     {
-        if ($event->getExitCode() !== 0 || ! $event->getInput()->isInteractive()) {
+        // disable stopping the chain when not interactive
+//        if ($event->getExitCode() !== 0 || ! $event->getInput()->isInteractive()) {
+        if ($event->getExitCode() !== 0) {
             return;
         }
 
